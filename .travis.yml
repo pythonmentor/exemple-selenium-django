@@ -7,10 +7,10 @@ python:
 addons:
   chrome: stable
   firefox: latest
-  postgresql: "11"
+  postgresql: 11
   apt:
     packages:
-    - postgresql-11
+      firefox-geckodriver
 
 branches:
   only:
