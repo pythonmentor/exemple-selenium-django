@@ -6,6 +6,11 @@ python:
 
 addons:
   chrome: stable
+  firefox: latest
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
 
 branches:
   only:
