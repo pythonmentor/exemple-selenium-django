@@ -31,7 +31,7 @@ class Command(BaseCommand):
             for asset in json.loads(response.read())['assets'] 
             if "linux64" in asset['name']
         ]
-        with tarfile.open(fileobj=urlopen(urls[0])), mode="r|gz") as f:
+        with tarfile.open(fileobj=urlopen(urls[0]), mode="r|gz") as f:
             f.extractall()
 
     def handle(self, *args, **options):
