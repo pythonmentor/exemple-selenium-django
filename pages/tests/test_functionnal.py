@@ -9,7 +9,7 @@ firefox_options = webdriver.FirefoxOptions()
 firefox_options.headless = True
 
 
-class FunctionalTestCases(StaticLiveServerTestCase):
+class ChromeFunctionalTestCases(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
 
     def setUp(self):
