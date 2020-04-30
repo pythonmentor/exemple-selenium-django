@@ -1,5 +1,8 @@
+import os
+
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 from selenium import webdriver
 
@@ -28,4 +31,5 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.driver.find_element_by_css_selector('#id_password').send_keys("openClassrooms.2020")
         self.driver.find_element_by_css_selector('#button-submit').click()
         logout = self.driver.find_element_by_css_selector('#button-logout')
-        self.assertEqual(logout.text, "Déconnexion")
+        self.assertEqual(logout.text, "Déconnexion", "Disconnect button should be available.")
+        self.assertFalse(os.path.exists('db.sqlite3'), 'sqlite db should not exist')
