@@ -1,6 +1,6 @@
 import json
 import tarfile
-from urllib import urlopen
+from urllib.request import urlopen
 from zipfile import ZipFile
 
 from django.core.management.base import BaseCommand
