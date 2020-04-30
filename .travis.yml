@@ -14,9 +14,14 @@ before_script:
   - pip install pipenv
   - pipenv install --dev
 
+before_install:
+  - wget https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip
+  - sudo unzip chromedriver_linux64.zip -d chromedriver
+  - export DJANGO_SETTINGS_MODULE="purbeurre.travis"
+
 services:
   - postgresql
 
 script:
-  - pipenv run python manage.py migrate --settings config.settings.travis
-  - pipenv run python manage.py test --settings config.settings.travis
+  - pipenv run python manage.py migrate
+  - pipenv run python manage.py test
