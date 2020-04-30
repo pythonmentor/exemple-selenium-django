@@ -13,7 +13,7 @@ class Command(BaseCommand):
         """Downloads and unzip the latest chromedriver for linux64."""
         version = get(
             "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
-        ).text()
+        ).text
         response = get(
             "https://chromedriver.storage.googleapis.com"
             f"/{version}/chromedriver_linux64.zip"
