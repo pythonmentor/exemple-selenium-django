@@ -13,7 +13,7 @@ branches:
 
 before_install:
   - wget https://chromedriver.storage.googleapis.com/81.0.4044.69/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip -d /usr/local/bin
+  - sudo unzip chromedriver_linux64.zip -d /usr/local/bin
 
 before_script:
   - pip install pipenv
