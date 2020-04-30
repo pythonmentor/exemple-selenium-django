@@ -1,0 +1,8 @@
+asgiref==3.2.7
+Django==3.0.5
+django-crispy-forms==1.9.0
+psycopg2-binary==2.8.5
+pytz==2020.1
+selenium==3.141.0
+sqlparse==0.3.1
+urllib3==1.25.9
