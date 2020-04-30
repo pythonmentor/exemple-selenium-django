@@ -1,3 +1,4 @@
+from io import BytesIO
 import json
 import tarfile
 from urllib.request import urlopen
@@ -18,7 +19,7 @@ class Command(BaseCommand):
             "https://chromedriver.storage.googleapis.com"
             f"/{version}/chromedriver_linux64.zip"
         )
-        with ZipFile(response) as f:
+        with ZipFile(BytesIO(response.read())) as f:
             f.extractall()
 
     def install_latest_geckdriver(self):
