@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - '3.6'
+
+addons:
+  chrome: stable
+
+branches:
+  only:
+    - staging
+
+before_script:
+  - pip install pipenv
+  - pipenv install --dev
+
+env:
+  - DJANGO_SETTINGS_MODULE="config.settings.travis"
+
+services:
+  - postgresql
+
+script:
+  - pipenv run python manage.py migrate
+  - pipenv run python manage.py test
