@@ -14,6 +14,7 @@ branches:
 
 before_script:
   - pip install -r requirements.txt
+  - sudo python manage.py install_webdrivers
 
 env:
   global:
@@ -23,5 +24,4 @@ services:
   - postgresql
 
 script:
-  - python manage.py install_webdrivers
   - python manage.py test

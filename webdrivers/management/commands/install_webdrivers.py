@@ -20,7 +20,7 @@ class Command(BaseCommand):
             f"/{version}/chromedriver_linux64.zip"
         )
         with ZipFile(BytesIO(response.read())) as f:
-            f.extractall()
+            f.extractall(path='/usr/local/bin')
 
     def install_latest_geckdriver(self):
         """Downloads and unzip the latest geckodriver for linux64."""
@@ -33,7 +33,7 @@ class Command(BaseCommand):
             if "linux64" in asset['name']
         ]
         with tarfile.open(fileobj=urlopen(urls[0]), mode="r|gz") as f:
-            f.extractall()
+            f.extractall(path='/usr/local/bin')
 
     def handle(self, *args, **options):
         """Main entry point."""
