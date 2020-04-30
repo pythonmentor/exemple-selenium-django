@@ -32,7 +32,9 @@ class Command(BaseCommand):
             if "linux64" in asset.get('name', '')
         ]
         for url in urls:
-            with tarfile.open(fileobj=get(url), mode="r|gz") as f:
+            with tarfile.open(
+                fileobj=BytesIO(get(url).content), mode="r|gz"
+            ) as f:
                 return f.extractall()
 
     def handle(self, *args, **options):
