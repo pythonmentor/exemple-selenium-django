@@ -1,5 +1,5 @@
 language: python
-dist: xenial
+dist: bionic
 
 python:
   - '3.6'
@@ -15,8 +15,9 @@ before_script:
   - pip install pipenv
   - pipenv install --dev
 
-before_install:
-  - export DJANGO_SETTINGS_MODULE="purbeurre.travis"
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="config.settings.travis"
 
 services:
   - postgresql
