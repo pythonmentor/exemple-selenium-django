@@ -14,7 +14,6 @@ branches:
 
 before_script:
   - pip install -r requirements.txt
-  - invoke install_webdrivers
 
 env:
   global:
@@ -24,4 +23,5 @@ services:
   - postgresql
 
 script:
+  - invoke install_webdrivers
   - python manage.py test
