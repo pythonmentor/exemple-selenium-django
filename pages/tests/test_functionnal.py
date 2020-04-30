@@ -2,10 +2,8 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
 from selenium import webdriver
 
-User = get_user_model()
-
 options = webdriver.ChromeOptions()
-# options.add_argument('headless')
+options.add_argument('headless')
 
 class ChromeFunctionalTestCases(StaticLiveServerTestCase):
     def setUp(self):
@@ -15,6 +13,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.driver.implicitly_wait(30)
         self.driver.maximize_window()
 
+        User = get_user_model()
         User.objects.create_user(username="tchappui", password="openClassrooms.2020")
         
 
