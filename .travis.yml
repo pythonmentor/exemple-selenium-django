@@ -20,6 +20,7 @@ env:
   global:
     - DJANGO_SETTINGS_MODULE="config.settings.travis"
     - PATH="$PATH:$(pwd)"
+    - chmod +x chromedriver && chmod +x geckodriver
 
 services:
   - postgresql
