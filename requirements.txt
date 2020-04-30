@@ -6,5 +6,3 @@ pytz==2020.1
 selenium==3.141.0
 sqlparse==0.3.1
 urllib3==1.25.9
-invoke==1.4.1
-requests==2.23.0

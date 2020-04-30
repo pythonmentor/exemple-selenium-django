@@ -23,5 +23,5 @@ services:
   - postgresql
 
 script:
-  - invoke install-webdrivers
+  - python manage.py install_webdrivers
   - python manage.py test
