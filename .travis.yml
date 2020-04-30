@@ -1,4 +1,5 @@
 language: python
+dist: xenial
 
 python:
   - '3.6'
@@ -15,9 +16,7 @@ before_script:
   - pipenv install --dev
 
 before_install:
-  - wget https://chromedriver.storage.googleapis.com/80.0.3987.16/chromedriver_linux64.zip
-  - sudo unzip chromedriver_linux64.zip -d chromedriver
-  - export DJANGO_SETTINGS_MODULE="config.settings.travis"
+  - export DJANGO_SETTINGS_MODULE="purbeurre.travis"
 
 services:
   - postgresql
