@@ -1,10 +1,9 @@
 from io import BytesIO
-import json
 import tarfile
-from urllib.request import urlopen
 from zipfile import ZipFile
 
 from django.core.management.base import BaseCommand
+from requests import get
 
 
 class Command(BaseCommand):
@@ -12,28 +11,29 @@ class Command(BaseCommand):
 
     def install_latest_chromedriver(self):
         """Downloads and unzip the latest chromedriver for linux64."""
-        version = urlopen(
+        version = get(
             "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
-        ).read().decode()
-        response = urlopen(
+        ).text()
+        response = get(
             "https://chromedriver.storage.googleapis.com"
             f"/{version}/chromedriver_linux64.zip"
         )
-        with ZipFile(BytesIO(response.read())) as f:
+        with ZipFile(BytesIO(response.content)) as f:
             f.extractall(path='/usr/local/bin')
 
     def install_latest_geckdriver(self):
         """Downloads and unzip the latest geckodriver for linux64."""
-        response = urlopen(
+        response = get(
             "https://api.github.com/repos/mozilla/geckodriver/releases/latest"
         )
         urls = [
             asset['browser_download_url'] 
-            for asset in json.loads(response.read())['assets'] 
-            if "linux64" in asset['name']
+            for asset in response.json().get('assets', []) 
+            if "linux64" in asset.get('name', '')
         ]
-        with tarfile.open(fileobj=urlopen(urls[0]), mode="r|gz") as f:
-            f.extractall(path='/usr/local/bin')
+        for url in urls:
+            with tarfile.open(fileobj=urlopen(url), mode="r|gz") as f:
+                return f.extractall(path='/usr/local/bin')
 
     def handle(self, *args, **options):
         """Main entry point."""
