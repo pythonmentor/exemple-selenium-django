@@ -1,28 +1,26 @@
 from io import BytesIO
-import tarfile
-from zipfile import ZipFile
 
 from django.core.management.base import BaseCommand
 from requests import get
 
 
 class Command(BaseCommand):
-    help = 'Installs web drivers on linux64.'
+    help = 'Downloads webdrivers'
 
     def install_latest_chromedriver(self):
-        """Downloads and unzip the latest chromedriver for linux64."""
+        """Downloads the latest chromedriver for linux64."""
         version = get(
             "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
         ).text
-        response = get(
+        url = (
             "https://chromedriver.storage.googleapis.com"
             f"/{version}/chromedriver_linux64.zip"
         )
-        with ZipFile(BytesIO(response.content)) as f:
-            f.extractall()
+        with open('chromedriver.zip', 'wb') as f:
+            f.write(get(url).content)
 
     def install_latest_geckdriver(self):
-        """Downloads and unzip the latest geckodriver for linux64."""
+        """Downloads the latest geckodriver for linux64."""
         response = get(
             "https://api.github.com/repos/mozilla/geckodriver/releases/latest"
         )
@@ -32,10 +30,8 @@ class Command(BaseCommand):
             if "linux64" in asset.get('name', '')
         ]
         for url in urls:
-            with tarfile.open(
-                fileobj=BytesIO(get(url).content), mode="r|gz"
-            ) as f:
-                return f.extractall()
+            with open('geckodriver.tar.gz', 'wb') as f:
+                return f.write(get(url).content)
 
     def handle(self, *args, **options):
         """Main entry point."""
