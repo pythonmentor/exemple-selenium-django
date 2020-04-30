@@ -6,7 +6,7 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.headless = True
 
 firefox_options = webdriver.FirefoxOptions()
-chrome_options.headless = True
+firefox_options.headless = True
 
 
 class ChromeFunctionalTestCases(StaticLiveServerTestCase):
