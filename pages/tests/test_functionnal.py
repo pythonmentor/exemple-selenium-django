@@ -1,15 +1,11 @@
-import os
-
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
-from django.conf import settings
-
 from selenium import webdriver
 
 User = get_user_model()
 
 options = webdriver.ChromeOptions()
-options.add_argument('headless')
+# options.add_argument('headless')
 
 class ChromeFunctionalTestCases(StaticLiveServerTestCase):
     def setUp(self):
@@ -32,4 +28,3 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.driver.find_element_by_css_selector('#button-submit').click()
         logout = self.driver.find_element_by_css_selector('#button-logout')
         self.assertEqual(logout.text, "Déconnexion", "Disconnect button should be available.")
-        self.assertFalse(os.path.exists('db.sqlite3'), 'sqlite db should not exist')
