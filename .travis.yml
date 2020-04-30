@@ -19,8 +19,6 @@ before_script:
 env:
   global:
     - DJANGO_SETTINGS_MODULE="config.settings.travis"
-    - PATH="$PATH:$(pwd)"
-    - chmod 755 chromedriver && chmod 755 geckodriver
 
 services:
   - postgresql
