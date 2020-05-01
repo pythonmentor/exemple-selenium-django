@@ -13,10 +13,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
 
     def setUp(self):
-        self.driver = webdriver.Chrome(
-            executable_path='./chromedriver', 
-            chrome_options=chrome_options
-        )
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver.get(self.live_server_url)
 
         self.driver.implicitly_wait(30)
@@ -43,10 +40,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
     """Functional tests using the Firefox web browser in headless mode."""
 
     def setUp(self):
-        self.driver = webdriver.Firefox(
-            executable_path='./chromedriver', 
-            firefox_options='./firefox_options'
-        )
+        self.driver = webdriver.Firefox(firefox_options=firefox_options)
         self.driver.get(self.live_server_url)
 
         self.driver.implicitly_wait(30)
