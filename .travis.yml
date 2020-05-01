@@ -5,6 +5,7 @@ python:
   - '3.6'
 
 addons:
+  # ajouter uniquement les navigateurs utilisés
   chrome: stable
   firefox: latest
 
