@@ -16,7 +16,7 @@ before_script:
   - pip install -r requirements.txt
   - python manage.py install_webdrivers
   - sudo unzip chromedriver.zip -d /usr/local/bin
-  - sudo tar -xvzf geckodriver.zip -C /usr/local/bin
+  - sudo tar -xvzf geckodriver.tar.gz -C /usr/local/bin
 
 env:
   global:
