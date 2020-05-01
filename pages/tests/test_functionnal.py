@@ -36,7 +36,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.assertEqual(logout.text, "Déconnexion", "Disconnect button should be available.")
 
     def test_database_uses_postgresql(self):
-        self.assertIn("postgresql", settings.DATABASE['default']['ENGINE'], "Database must be postgresql")
+        self.assertIn("postgresql", settings.DATABASES['default']['ENGINE'], "Database must be postgresql")
 
 
 
