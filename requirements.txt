@@ -7,3 +7,4 @@ selenium==3.141.0
 sqlparse==0.3.1
 urllib3==1.25.9
 requests==2.23.0
+tchappui-webdriver==0.1.0
