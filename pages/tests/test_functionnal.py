@@ -1,5 +1,6 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from selenium import webdriver
 
 chrome_options = webdriver.ChromeOptions()
@@ -33,6 +34,9 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         self.driver.find_element_by_css_selector('#button-submit').click()
         logout = self.driver.find_element_by_css_selector('#button-logout')
         self.assertEqual(logout.text, "Déconnexion", "Disconnect button should be available.")
+
+    def test_database_uses_postgresql(self):
+        self.assertIn("postgresql", settings.DATABASE['default']['ENGINE'], "Database must be postgresql")
 
 
 
