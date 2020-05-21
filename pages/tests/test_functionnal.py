@@ -26,9 +26,9 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         cls.driver.maximize_window()
 
     @classmethod
-    def tearDown(self):
+    def tearDownClass(cls):
         super().tearDownClass()
-        self.driver.quit()
+        cls.driver.quit()
 
     def setUp(self):
         User = get_user_model()
@@ -65,9 +65,9 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         cls.driver.maximize_window()
 
     @classmethod
-    def tearDown(self):
+    def tearDown(cls):
         super().tearDownClass()
-        self.driver.quit()
+        cls.driver.quit()
 
     def setUp(self):
         User = get_user_model()
