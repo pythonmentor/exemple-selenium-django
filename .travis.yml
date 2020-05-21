@@ -15,11 +15,11 @@ branches:
     
 install:
   - pip install pipenv
-  - pipenv install
+  - pipenv install --dev
 
 before_script:
   # ajouter tchappui-webdrivers dans requirements.txt
-  - pipenv run install-webdrivers
+  - install-webdrivers
 
 env:
   global:
@@ -29,4 +29,4 @@ services:
   - postgresql
 
 script:
-  - pipenv run python manage.py test -v2
+  - python manage.py test -v2
