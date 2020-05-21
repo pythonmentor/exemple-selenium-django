@@ -12,6 +12,10 @@ addons:
 branches:
   only:
     - staging
+    
+install:
+  - pip install pipenv
+  - pipenv install
 
 before_script:
   # ajouter tchappui-webdrivers dans requirements.txt
