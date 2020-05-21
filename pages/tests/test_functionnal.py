@@ -18,22 +18,26 @@ firefox_options.headless = True
 class ChromeFunctionalTestCases(StaticLiveServerTestCase):
     """Functional tests using the Chrome web browser in headless mode."""
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.driver = webdriver.Chrome(chrome_options=chrome_options)
+        cls.driver.implicitly_wait(30)
+        cls.driver.maximize_window()
+
+    @classmethod
+    def tearDown(self):
+        super().tearDownClass()
+        self.driver.quit()
+
     def setUp(self):
-        self.driver = webdriver.Chrome(chrome_options=chrome_options)
-        self.driver.get(self.live_server_url)
-
-        self.driver.implicitly_wait(30)
-        self.driver.maximize_window()
-
         User = get_user_model()
         User.objects.create_user(
             username="tchappui", password="openClassrooms.2020"
         )
 
-    def tearDown(self):
-        self.driver.close()
-
     def test_user_can_connect_and_disconnect(self):
+        self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
         self.driver.find_element_by_css_selector('#id_username').send_keys(
             "tchappui"
@@ -53,22 +57,26 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
 class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
     """Functional tests using the Firefox web browser in headless mode."""
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.driver = webdriver.Firefox(firefox_options=firefox_options)
+        cls.driver.implicitly_wait(30)
+        cls.driver.maximize_window()
+
+    @classmethod
+    def tearDown(self):
+        super().tearDownClass()
+        self.driver.quit()
+
     def setUp(self):
-        self.driver = webdriver.Firefox(firefox_options=firefox_options)
-        self.driver.get(self.live_server_url)
-
-        self.driver.implicitly_wait(30)
-        self.driver.maximize_window()
-
         User = get_user_model()
         User.objects.create_user(
             username="tchappui", password="openClassrooms.2020"
         )
 
-    def tearDown(self):
-        self.driver.close()
-
     def test_user_can_connect_and_disconnect(self):
+        self.driver.get(self.live_server_url)
         self.driver.find_element_by_css_selector('#button-login').click()
         self.driver.find_element_by_css_selector('#id_username').send_keys(
             "tchappui"
@@ -83,4 +91,3 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
             "Déconnexion",
             "Disconnect button should be available.",
         )
-
