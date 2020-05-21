@@ -65,7 +65,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         cls.driver.maximize_window()
 
     @classmethod
-    def tearDown(cls):
+    def tearDownClass(cls):
         super().tearDownClass()
         cls.driver.quit()
 
