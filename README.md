@@ -1,4 +1,4 @@
-# Exemple de tests fonctionnels sous Travis
+# Exemple de tests fonctionnels sous Travis-CI
 
 Ce dépôt contient un projet django minimal contenant un test fonctionnel pour Chrome et un pour Firefox. 
 Le fichier .travis.yml configure l'intégration continue sous Travis-CI pour utiliser chromedriver et geckodriver. 
