@@ -16,7 +16,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
         super().setUpClass()
         cls.driver = webdriver.Firefox(
             executable_path=str(BASE_DIR / 'webdrivers' / 'chromedriver'),
-            firefox_options=firefox_options,
+            options=firefox_options,
         )
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
