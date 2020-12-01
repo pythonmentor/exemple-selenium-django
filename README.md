@@ -6,5 +6,5 @@ Le package **tchappui-webdriver**, ajouté au requirements.txt, a été créer a
 correcte de ces webdriver.
 
 Pour essayer de faire tourner les tests fonctionnels en local, il suffit d'installer [chromedriver](https://chromedriver.chromium.org/downloads) 
-et [geckodriver](https://github.com/mozilla/geckodriver/releases) dans le PATH et, bien entendu, d'installer Chrome et 
+et [geckodriver](https://github.com/mozilla/geckodriver/releases) dans un sous-répertoire appelé webdrivers, bien entendu, d'installer Chrome et 
 Firefox sur sur votre ordinateur.
