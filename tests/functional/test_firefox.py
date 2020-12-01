@@ -1,5 +1,6 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from django.contrib.auth import get_user_model
+from django.conf.settings import BASE_DIR
 from selenium import webdriver
 
 
@@ -14,6 +15,7 @@ class FirefoxFunctionalTestCases(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.driver = webdriver.Firefox(
+            executable_path=str(BASE_DIR / 'webdrivers' / 'chromedriver'),
             firefox_options=firefox_options,
         )
         cls.driver.implicitly_wait(30)
