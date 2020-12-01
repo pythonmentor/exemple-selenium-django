@@ -18,7 +18,7 @@ class ChromeFunctionalTestCases(StaticLiveServerTestCase):
         super().setUpClass()
         cls.driver = webdriver.Chrome(
             executable_path=str(BASE_DIR / 'webdrivers' / 'chromedriver'),
-            chrome_options=chrome_options,
+            options=chrome_options,
         )
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
